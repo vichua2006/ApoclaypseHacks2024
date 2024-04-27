@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% if title %}
+    <title>APOCALIFT - {{ title }}</title>
+    {% else %}
+    <title>APOCALIFT</title>
+    {% endif %}
+    <link rel="icon" href="{{ url_for('static', filename='icon-logo-transparent-png.png') }}" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .message-box {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .form-control {
+            background-color: black;
+            color: white;
+            margin-right: 10px;
+
+        }
+
+        .profile-pic {
+            object-fit: cover;
+            /* Scale the image to fill the container */
+            width: 100px;
+            /* Set a fixed width for the image */
+            height: 100px;
+            /* Set a fixed height for the image */
+            border-radius: 50%;
+            /* Apply circular clipping mask to the image */
+        }
+
+        .account-img {
+            height: 125px;
+            width: 125px;
+            margin-right: 20px;
+            margin-bottom: 16px;
+        }
+
+        body {
+            overflow: hidden;
+
+            background-color: #161616;
+        }
+
+        .sidebar {
+
+            background-color: #000000;
+            height: 100%;
+            position: fixed;
+            left: 0;
+            width: 200px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebar-nav {
+            margin-left: 0;
+            padding-left: 0;
+            font-weight: bold;
+        }
+
+        .sidebar-nav li {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sidebar-nav li a {
+            color: #4e4e4e;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar-nav li a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .content {
+            margin-left: 200px;
+            padding: 50px;
+            color: #fff;
+        }
+
+        .founder a {
+            display: inline-block;
+            margin: 5px 10px;
+            color: #0ac137;
+            /* White color text */
+            text-decoration: none;
+        }
+
+        .founder i {
+            margin-right: 5px;
+        }
+    </style>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+
+            <a href="{{url_for('home')}}"><img src="{{ url_for('static', filename='logo-no-background.png') }}"
+                    style="max-width: 165px; height: auto;"></a>
+
+            <ul class="sidebar-nav">
+                <br />
+                <li><a href="{{url_for('about')}}">About</a></li>
+            </ul>
+        </div>
+
+
+    </div>
+    {% block content %}
+    {% endblock content %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
