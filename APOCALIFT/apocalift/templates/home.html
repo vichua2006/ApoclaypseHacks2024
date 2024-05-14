@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+  .home {
+    margin-left: 200px;
+    padding: 50px;
+    color: #fff;
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    height: 100vh;
+
+    /* Styling for the scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: #888 #222;
+  }
+
+  .home::-webkit-scrollbar-thumb {
+    background-color: #888;
+  }
+
+  .home::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+
+  .home::-webkit-scrollbar {
+    width: 8px;
+    background-color: #222;
+  }
+
+  .Start {
+    color: #4e4e4e;
+    text-decoration: none;
+    padding: 20px 40px;
+    font-size: 18px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease;
+  }
+
+  .Start:hover {
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .description {
+    text-align: center;
+    font-size: 24px;
+    /* Large font size for visibility */
+    margin-bottom: 50px;
+    /* Space before the button */
+    color: #ccc;
+    /* Light gray color for the text */
+    font-weight: bold;
+    /* Make the font bold */
+  }
+  .image-container {
+    text-align: center;
+    background-color: #2b2b2b90; /* Dark grey background for contrast */
+    padding: 20px 0; /* Padding around images */
+    border-radius: 8px;
+  }
+
+  .image-container img {
+    border: 3px solid #525252; /* Grey border for images */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    border-radius: 8px; /* Rounded corners for images */
+    margin: 10px; /* Spacing between images */
+    width: 500px; /* Fixed width */
+    height: 300px; /* Fixed height */
+  }
+
+  .description {
+    font-size: 16px; /* Font size for readability */
+    color: #ebe6e6; /* White color for text */
+    background-color: #33333383; /* Darker background for the text area */
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Shadow for emphasis */
+    border-radius: 10px; /* Rounded corners for the box */
+    padding: 20px; /* Padding inside the box */
+    margin: 20px auto; /* Auto margins for horizontal centering */
+    width: 80%; /* Control width of the description box */
+    text-align: center; /* Center text alignment */
+  }
+</style>
+
+<div class="home">
+  <div class="image-container">
+    <img src="https://www.gadgetify.com/wp-content/uploads/2018/08/24/mavic-pro-2-drone.gif" alt="Mavic Pro 2 Drone">
+    <img src="https://miro.medium.com/v2/resize:fit:1200/format:webp/1*qTWAJMhSlrDHRBe6fWjKJg.gif" alt="Exploratory Drone Operation">
+  </div>
+  <div class="description">
+    APOCALIFT provides drone and RC rentals for critical survival and exploration needs. Secure your territory and
+    transport essentials in any environment with our platform.
+  </div>
+  <div style="display: flex; justify-content: center; font-weight: bold;">
+    <div class="form-group">
+      {{ form.submit(class="Start") }}
+    </div>
+  </div>
+</div>
+{% endblock %}
