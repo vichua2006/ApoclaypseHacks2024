@@ -8,6 +8,10 @@ def home():
     form = Home()
     return render_template('home.html', title='Home', form=form)
 
-@app.route("/about")
+@app.route('/about')
 def about():
     return render_template('about.html')
+
+@app.route('/test_control')
+def test_control():
+    return render_template('test_control.html')
