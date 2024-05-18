@@ -13,3 +13,6 @@ venv.bak/
 # Flask stuff:
 instance/
 .webassets-cache
+
+#python stuff
+__pycache__/
