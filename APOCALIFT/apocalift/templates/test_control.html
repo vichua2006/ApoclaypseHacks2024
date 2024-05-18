@@ -17,27 +17,62 @@
     </ul>
 </div>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW2_pLsxeLSrnai3LbKYgSo5XG-O53xNw&callback=initMap" async
+    defer></script>
+<script>
+    function initMap() {
+        var mapOptions = {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 8
+        };
+        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-
+        // Example of setting the info menu values
+        document.getElementById('coordinates').textContent = '{{ coordinate }}';
+        document.getElementById('power').textContent = '{{ power }}';
+        document.getElementById('latitude').textContent = '{{ latitude }}';
+        document.getElementById('longitude').textContent = '{{ longitude }}';
+    }
+</script>
 <script src="{{ url_for('static', filename='main.js') }}"></script>
 
 <style>
+    #map {
+        position: fixed;
+        top: 20px;
+        right: -1100px;
+        /* Move the map further to the right */
+        width: 300px;
+        /* Set the desired width for the map */
+        height: 200px;
+        /* Set the desired height for the map */
+        z-index: 1000;
+        /* Ensure the map appears above other elements */
+        border: 2px solid #fff;
+        /* Optional: Add a border to the map */
+        border-radius: 10px;
+        /* Optional: Add rounded corners to the map */
+    }
 
     .instruction-card {
         position: absolute;
         bottom: 20px;
-        left:700px;
+        left: 700px;
         background-color: rgba(0, 0, 0, 0.5);
         color: #fff;
         padding: 10px;
         border-radius: 50px;
         border: 2px solid #fff;
     }
+
     .info-menu {
         position: fixed;
-        top: 100px; /* Adjust based on the height of the map */
-        right: 40px; /* Align with the map */
-        width: 300px; /* Match the width of the map */
+        top: 250px;
+        /* Adjust based on the height of the map */
+        right: 40px;
+        /* Align with the map */
+        width: 300px;
+        /* Match the width of the map */
         background-color: rgba(0, 0, 0, 0.8);
         color: white;
         padding: 10px;
