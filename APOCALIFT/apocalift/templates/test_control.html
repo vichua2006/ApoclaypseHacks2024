@@ -1,20 +1,58 @@
-<html>
-    <body>
-        <h1>Mozilla is cool</h1>
-        <img src="images/firefox-icon.png" alt="The Firefox logo: a flaming fox surrounding the Earth.">
-    
-        <p>At Mozilla, we're a global community of</p>
-    
-        <ul> <!-- changed to list in the tutorial -->
-            <li>technologists</li>
-            <li>thinkers</li>
-            <li>builders</li>
-        </ul>
-    
-        <p>working together to keep the Internet alive and accessible, so people worldwide can be informed contributors and creators of the Web. We believe this act of human collaboration across an open platform is essential to individual growth and our collective future.</p>
-    
-        <p>Read the <a href="https://www.mozilla.org/en-US/about/manifesto/">Mozilla Manifesto</a> to learn even more about the values and principles that guide the pursuit of our mission.</p>
-    </body>
-</html>
+{% extends "layout.html" %}
+{% block content %}
+
+<div id="map"></div>
+<div class="instruction-card">
+    <span>W: Forward</span>
+    <span>A: Left</span>
+    <span>D: Right</span>
+</div>
+
+<div class="info-menu">
+    <ul>
+        <li>Coordinates: <span id="coordinates">{{ coordinate }}</span></li>
+        <li>Power: <span id="power">{{ power }}</span></li>
+        <li>Latitude: <span id="latitude">{{ latitude }}</span></li>
+        <li>Longitude: <span id="longitude">{{ longitude }}</span></li>
+    </ul>
+</div>
+
+
 
 <script src="{{ url_for('static', filename='main.js') }}"></script>
+
+<style>
+
+    .instruction-card {
+        position: absolute;
+        bottom: 20px;
+        left:700px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        padding: 10px;
+        border-radius: 50px;
+        border: 2px solid #fff;
+    }
+    .info-menu {
+        position: fixed;
+        top: 100px; /* Adjust based on the height of the map */
+        right: 40px; /* Align with the map */
+        width: 300px; /* Match the width of the map */
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 10px;
+        border: 2px solid #fff;
+        border-radius: 10px;
+    }
+
+    .info-menu ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .info-menu li {
+        margin: 5px 0;
+    }
+</style>
+
+{% endblock %}
