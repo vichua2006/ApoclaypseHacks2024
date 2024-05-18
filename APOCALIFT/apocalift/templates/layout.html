@@ -121,6 +121,7 @@
                 <br />
                 <li><a href="{{url_for('main.about')}}">About</a></li>
                 {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('main.test_control') }}">Control</a></li>
                 <li><a href="{{url_for('users.logout')}}">Logout</a></li>
                 {% else %}
                 <li><a href="{{url_for('users.register')}}">Sign Up</a></li>
@@ -139,3 +140,5 @@
 </body>
 
 </html>
+                
+   

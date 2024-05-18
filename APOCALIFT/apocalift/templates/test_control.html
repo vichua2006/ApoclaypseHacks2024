@@ -1,20 +1,93 @@
-<html>
-    <body>
-        <h1>Mozilla is cool</h1>
-        <img src="images/firefox-icon.png" alt="The Firefox logo: a flaming fox surrounding the Earth.">
-    
-        <p>At Mozilla, we're a global community of</p>
-    
-        <ul> <!-- changed to list in the tutorial -->
-            <li>technologists</li>
-            <li>thinkers</li>
-            <li>builders</li>
-        </ul>
-    
-        <p>working together to keep the Internet alive and accessible, so people worldwide can be informed contributors and creators of the Web. We believe this act of human collaboration across an open platform is essential to individual growth and our collective future.</p>
-    
-        <p>Read the <a href="https://www.mozilla.org/en-US/about/manifesto/">Mozilla Manifesto</a> to learn even more about the values and principles that guide the pursuit of our mission.</p>
-    </body>
-</html>
+{% extends "layout.html" %}
+{% block content %}
 
+<div id="map"></div>
+<div class="instruction-card">
+    <span>W: Forward</span>
+    <span>A: Left</span>
+    <span>D: Right</span>
+</div>
+
+<div class="info-menu">
+    <ul>
+        <li>Coordinates: <span id="coordinates">{{ coordinate }}</span></li>
+        <li>Power: <span id="power">{{ power }}</span></li>
+        <li>Latitude: <span id="latitude">{{ latitude }}</span></li>
+        <li>Longitude: <span id="longitude">{{ longitude }}</span></li>
+    </ul>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW2_pLsxeLSrnai3LbKYgSo5XG-O53xNw&callback=initMap" async
+    defer></script>
+<script>
+    function initMap() {
+        var mapOptions = {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 8
+        };
+        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+        // Example of setting the info menu values
+        document.getElementById('coordinates').textContent = '{{ coordinate }}';
+        document.getElementById('power').textContent = '{{ power }}';
+        document.getElementById('latitude').textContent = '{{ latitude }}';
+        document.getElementById('longitude').textContent = '{{ longitude }}';
+    }
+</script>
 <script src="{{ url_for('static', filename='main.js') }}"></script>
+
+<style>
+    #map {
+        position: fixed;
+        top: 20px;
+        right: -1100px;
+        /* Move the map further to the right */
+        width: 300px;
+        /* Set the desired width for the map */
+        height: 200px;
+        /* Set the desired height for the map */
+        z-index: 1000;
+        /* Ensure the map appears above other elements */
+        border: 2px solid #fff;
+        /* Optional: Add a border to the map */
+        border-radius: 10px;
+        /* Optional: Add rounded corners to the map */
+    }
+
+    .instruction-card {
+        position: absolute;
+        bottom: 20px;
+        left: 700px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        padding: 10px;
+        border-radius: 50px;
+        border: 2px solid #fff;
+    }
+
+    .info-menu {
+        position: fixed;
+        top: 250px;
+        /* Adjust based on the height of the map */
+        right: 40px;
+        /* Align with the map */
+        width: 300px;
+        /* Match the width of the map */
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 10px;
+        border: 2px solid #fff;
+        border-radius: 10px;
+    }
+
+    .info-menu ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .info-menu li {
+        margin: 5px 0;
+    }
+</style>
+
+{% endblock %}

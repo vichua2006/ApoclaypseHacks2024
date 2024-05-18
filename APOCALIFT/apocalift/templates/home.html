@@ -1,3 +1,4 @@
+<!-- templates/home.html -->
 {% extends "layout.html" %}
 {% block content %}
 <style>
@@ -6,10 +7,7 @@
     padding: 50px;
     color: #fff;
     overflow-y: auto;
-    /* Enable vertical scrolling */
     height: 100vh;
-
-    /* Styling for the scrollbar */
     scrollbar-width: thin;
     scrollbar-color: #888 #222;
   }
@@ -45,57 +43,38 @@
   .description {
     text-align: center;
     font-size: 24px;
-    /* Large font size for visibility */
     margin-bottom: 50px;
-    /* Space before the button */
     color: #ccc;
-    /* Light gray color for the text */
     font-weight: bold;
-    /* Make the font bold */
-  }
-  .image-container {
-    text-align: center;
-    background-color: #2b2b2b90; /* Dark grey background for contrast */
-    padding: 20px 0; /* Padding around images */
-    border-radius: 8px;
-  }
-
-  .image-container img {
-    border: 3px solid #525252; /* Grey border for images */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Shadow for depth */
-    border-radius: 8px; /* Rounded corners for images */
-    margin: 10px; /* Spacing between images */
-    width: 500px; /* Fixed width */
-    height: 300px; /* Fixed height */
   }
 
   .description {
-    font-size: 16px; /* Font size for readability */
-    color: #ebe6e6; /* White color for text */
-    background-color: #33333383; /* Darker background for the text area */
-
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Shadow for emphasis */
-    border-radius: 10px; /* Rounded corners for the box */
-    padding: 20px; /* Padding inside the box */
-    margin: 20px auto; /* Auto margins for horizontal centering */
-    width: 80%; /* Control width of the description box */
-    text-align: center; /* Center text alignment */
+    font-size: 16px;
+    color: #ebe6e6;
+    background-color: #33333383;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
   }
 </style>
 
 <div class="home">
-  <div class="image-container">
-    <img src="https://www.gadgetify.com/wp-content/uploads/2018/08/24/mavic-pro-2-drone.gif" alt="Mavic Pro 2 Drone">
-    <img src="https://miro.medium.com/v2/resize:fit:1200/format:webp/1*qTWAJMhSlrDHRBe6fWjKJg.gif" alt="Exploratory Drone Operation">
-  </div>
   <div class="description">
     APOCALIFT provides drone and RC rentals for critical survival and exploration needs. Secure your territory and
     transport essentials in any environment with our platform.
   </div>
+  <div id="react-root" style="display: flex; justify-content: center; font-weight: bold;"></div>
   <div style="display: flex; justify-content: center; font-weight: bold;">
-    <div class="form-group">
-      {{ form.submit(class="Start") }}
-    </div>
+    <form action="{{ url_for('main.test_control') }}" method="get">
+      <div class="form-group">
+        <button type="submit" class="Start">Start</button>
+      </div>
+    </form>
   </div>
 </div>
+
+<script src="{{ url_for('static', filename='react/static/js/main.js') }}"></script>
 {% endblock %}
