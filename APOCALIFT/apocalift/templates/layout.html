@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     {% if title %}
     <title>APOCALIFT - {{ title }}</title>
     {% else %}
     <title>APOCALIFT</title>
     {% endif %}
-    <link rel="icon" href="{{ url_for('static', filename='icon-logo-transparent-png.png') }}" type="image/png">
+    <link rel="icon" href="{{ url_for('static', filename='icon logo.png') }}" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -113,12 +114,18 @@
     <div class="sidebar">
         <div class="sidebar-header">
 
-            <a href="{{url_for('home')}}"><img src="{{ url_for('static', filename='logo-no-background.png') }}"
+            <a href="{{url_for('main.home')}}"><img src="{{ url_for('static', filename='logo-no-background.png') }}"
                     style="max-width: 165px; height: auto;"></a>
 
             <ul class="sidebar-nav">
                 <br />
-                <li><a href="{{url_for('about')}}">About</a></li>
+                <li><a href="{{url_for('main.about')}}">About</a></li>
+                {% if current_user.is_authenticated %}
+                <li><a href="{{url_for('users.logout')}}">Logout</a></li>
+                {% else %}
+                <li><a href="{{url_for('users.register')}}">Sign Up</a></li>
+                <li><a href="{{url_for('users.login')}}">Log In</a></li>
+                {% endif %}
             </ul>
         </div>
 
