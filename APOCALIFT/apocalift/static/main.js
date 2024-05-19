@@ -1,5 +1,5 @@
 var pressed = [];
-const timeout = 1000;
+const timeout = 5000;
 
 function onkeypressed(e){
     pressed[e.keyCode] = e.type == 'keydown';
