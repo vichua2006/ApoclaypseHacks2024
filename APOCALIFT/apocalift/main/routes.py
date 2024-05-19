@@ -42,7 +42,7 @@ def receive_keypress():
 
     speed = (SPEED_PERCENTAGE if w else '00')
     if (a ^ d): angle = (SERVO_LEFT_BOUND if a else SERVO_RIGHT_BOUND)
-    else: angle = '0'
+    else: angle = '90'
 
     passed_str = speed + angle
 

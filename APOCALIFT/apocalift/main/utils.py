@@ -4,9 +4,9 @@ import time
 
 # ADJUST SPEED & ANGLE HERE
 # speed must be a 2 digit value
-SPEED_PERCENTAGE = '05'
-SERVO_LEFT_BOUND = '01'
-SERVO_RIGHT_BOUND = '02'
+SPEED_PERCENTAGE = '20'
+SERVO_LEFT_BOUND = '45'
+SERVO_RIGHT_BOUND = '135'
 
 def init_arduino():
     # must be COM19
