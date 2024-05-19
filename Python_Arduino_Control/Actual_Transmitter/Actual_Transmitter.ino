@@ -23,8 +23,8 @@ uint8_t broadcastAddress[] = {0xCC, 0x7B, 0x5C, 0x28, 0xD0, 0x48};
 // Must match the receiver structure
 typedef struct struct_message {
   char a[32];
-  int speed;
-  int servo_angle;
+  int b;
+  int c;
   bool d;
 } struct_message;
 
@@ -41,9 +41,9 @@ void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
 
 void blink(){
   digitalWrite(LED_PIN, HIGH);
-  delay(1000);
+  delay(25);
   digitalWrite(LED_PIN, LOW);
-  delay(1000);
+  delay(25);
 }
  
 void setup() {
@@ -85,12 +85,10 @@ void loop() {
   SPEED = str.substring(0, 2).toInt();
   SERVO_ANGLE = str.substring(2).toInt();
 
-	for (int i=0;i<SPEED*SERVO_ANGLE;i++) blink();
-
   // Set values to send
   strcpy(myData.a, "THIS IS A CHAR");
-  myData.speed = SPEED;
-  myData.servo_angle = SERVO_ANGLE;
+  myData.b = SPEED;
+  myData.c = SERVO_ANGLE;
   myData.d = false;
   
   // Send message via ESP-NOW
@@ -102,5 +100,5 @@ void loop() {
   else {
     Serial.println("Error sending the data");
   }
-  delay(2000);
+  delay(25);
 }
