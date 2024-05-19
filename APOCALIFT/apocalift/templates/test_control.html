@@ -12,28 +12,61 @@
 
 <div class="info-menu">
     <ul>
-        <li>Coordinates: <span id="coordinates">{{ coordinate }}</span></li>
+        <li>Coordinates: <span id="coordinates">{{ coordinate[0] }}, {{ coordinate[1] }}</span></li>
         <li>Power: <span id="power">{{ power }}</span></li>
         <li>Latitude: <span id="latitude">{{ latitude }}</span></li>
         <li>Longitude: <span id="longitude">{{ longitude }}</span></li>
     </ul>
 </div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW2_pLsxeLSrnai3LbKYgSo5XG-O53xNw&callback=initMap" async
-    defer></script>
-<script>
-    function initMap() {
-        var mapOptions = {
-            center: { lat: -34.397, lng: 150.644 },
-            zoom: 8
-        };
-        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+<!-- Video stream element -->
+<div class="video-stream">
+    <iframe src="http://10.93.92.140:5000/" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
 
-        // Example of setting the info menu values
-        document.getElementById('coordinates').textContent = '{{ coordinate }}';
-        document.getElementById('power').textContent = '{{ power }}';
-        document.getElementById('latitude').textContent = '{{ latitude }}';
-        document.getElementById('longitude').textContent = '{{ longitude }}';
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW2_pLsxeLSrnai3LbKYgSo5XG-O53xNw&callback=initMap" async defer></script>
+<script>
+    let map, marker;
+
+    function initMap() {
+        const initialPosition = { lat: {{ coordinate[0] }}, lng: {{ coordinate[1] }} };
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: initialPosition,
+            zoom: 15
+        });
+        marker = new google.maps.Marker({
+            position: initialPosition,
+            map: map,
+            title: 'Current Location'
+        });
+
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(updatePosition, handleError, {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function updatePosition(position) {
+        const newPos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+        };
+
+        marker.setPosition(newPos);
+        map.setCenter(newPos);
+
+        document.getElementById('coordinates').textContent = newPos.lat + ', ' + newPos.lng;
+        document.getElementById('latitude').textContent = newPos.lat;
+        document.getElementById('longitude').textContent = newPos.lng;
+    }
+
+    function handleError(error) {
+        console.warn(`ERROR(${error.code}): ${error.message}`);
     }
 </script>
 
@@ -42,17 +75,11 @@
         position: fixed;
         top: 20px;
         right: -1100px;
-        /* Move the map further to the right */
         width: 300px;
-        /* Set the desired width for the map */
         height: 200px;
-        /* Set the desired height for the map */
         z-index: 1000;
-        /* Ensure the map appears above other elements */
         border: 2px solid #fff;
-        /* Optional: Add a border to the map */
         border-radius: 10px;
-        /* Optional: Add rounded corners to the map */
     }
 
     .instruction-card {
@@ -68,12 +95,9 @@
 
     .info-menu {
         position: fixed;
-        top: 250px;
-        /* Adjust based on the height of the map */
+        top: 230px;
         right: 40px;
-        /* Align with the map */
         width: 300px;
-        /* Match the width of the map */
         background-color: rgba(0, 0, 0, 0.8);
         color: white;
         padding: 10px;
@@ -88,6 +112,24 @@
 
     .info-menu li {
         margin: 5px 0;
+    }
+
+    .video-stream {
+        position: absolute;
+        top: 20px;
+        left: 450px;
+        width: 640px;
+        height: 480px;
+        z-index: 999;
+        border: 2px solid #fff;
+        border-radius: 10px;
+        background-color: #000;
+    }
+
+    .video-stream iframe {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
     }
 </style>
 

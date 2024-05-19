@@ -21,10 +21,10 @@ def about():
 @login_required
 def test_control():
     power = "100%"
-    coordinate = "12.34.56"   
-    longitude = "12345"
-    latidude = "765432"
-    return render_template('test_control.html', title='test control', power=power, coordinate=coordinate, longitude=longitude, latitude=latidude)
+    coordinate = (43.64485589208203, -79.4007881899902)
+    longitude = coordinate[1]
+    latitude = coordinate[0]
+    return render_template('test_control.html', title='test control', power=power, coordinate=coordinate, longitude=longitude, latitude=latitude)
 
 @main.route("/receive_keypress", methods=['POST'])
 def receive_keypress():
