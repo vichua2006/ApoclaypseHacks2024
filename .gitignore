@@ -15,4 +15,5 @@ instance/
 .webassets-cache
 
 #python stuff
-__pycache__/
+*__pycache__/
+*.pyc

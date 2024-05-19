@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 <div id="map"></div>
 <div class="instruction-card">
     <span>W: Forward</span>
@@ -34,8 +37,6 @@
         document.getElementById('longitude').textContent = '{{ longitude }}';
     }
 </script>
-<script src="{{ url_for('static', filename='main.js') }}"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
 
 <style>
     #map {

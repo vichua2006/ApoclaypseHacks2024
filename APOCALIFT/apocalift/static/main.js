@@ -9,7 +9,11 @@ function checkkeys(){
     let flag = false;
     var downed = []
     for (i in pressed){
-        if (pressed[i]) console.log(i), downed.push(i) , flag = true;
+        if (pressed[i]){
+            console.log(i);
+            downed.push(i);
+            flag = true;
+        }
     }
     if (!flag) console.log("No keys pressed");
 
