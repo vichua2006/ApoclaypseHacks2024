@@ -6,7 +6,7 @@ Image that you're a zombie apocalypse survivor, about to explore an unknown regi
 
 Introducing Apocalift!
 
-![image of logo](.\APOCALIFT\apocalift\static\logo-no-background.png)
+![image of logo](https://github.com/vichua2006/ApoclaypseHacks2024/blob/main/APOCALIFT/apocalift/static/logo-no-background.png)
 
 ### What it does
 
