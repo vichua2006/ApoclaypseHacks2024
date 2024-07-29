@@ -15,5 +15,6 @@ Our platform provides a remote-controlled drone and RC vehicle rental made tailo
 ### Tech Stack
 web app was built with Flask for the backend, and vanilla JavaScript in frontend, which detects user keypresses and sends them to the backend. From there, data is transmitted to an ESP32 via serial communication, then passed wirelessly to another ESP32. This second ESP32 interprets the signals and controls the movement of the RC car. A Raspberry Pi is used to capture and host a video feed on the local network, which is then displayed to the users on the web app.
 
-### Video Interview + Demo
-[Google Drive](https://drive.google.com/file/d/1-vGJD3u7TuKRaUj2j0Wwj25fixyB8XSa/view)
+### Video Interview + Demo (Google Drive)
+[Video 1](https://drive.google.com/file/d/1-vGJD3u7TuKRaUj2j0Wwj25fixyB8XSa/view)
+[Video 2](https://drive.google.com/drive/folders/15OVgASYSCsu65D7f-ive30KjX_x1PXSn)
