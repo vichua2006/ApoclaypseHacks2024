@@ -18,3 +18,9 @@ web app was built with Flask for the backend, and vanilla JavaScript in frontend
 ### Video Interview + Demo (Google Drive)
 [Video 1](https://drive.google.com/file/d/1-vGJD3u7TuKRaUj2j0Wwj25fixyB8XSa/view)
 [Video 2](https://drive.google.com/drive/folders/15OVgASYSCsu65D7f-ive30KjX_x1PXSn)
+
+### Work Distribution
+**Rohan Katreddy**: Responsible for Hardware, Arduino, Python on RPI (video streaming); everything present in Python_Arduino_Control folder. <br />
+**Victor Huang**: Responsible for the integration and communication between frontend, backend, and hardware (ESP32). <br />
+**Eric Lee**: Responsible for UI design and frontend implementation, displaying video footage and map data on the web-app in real-time. <br />
+**Jayden**: Assisted with hardware, configuring the arduino to receive video footage. <br />
